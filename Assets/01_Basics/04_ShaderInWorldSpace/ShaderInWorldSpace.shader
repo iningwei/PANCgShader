@@ -1,4 +1,4 @@
-﻿Shader "My/DebuggingOfShaders"
+﻿Shader "My/ShaderInWorldSpace"
 { 
     SubShader//Unity chooses the subshader that fits the GPU best
     {         
