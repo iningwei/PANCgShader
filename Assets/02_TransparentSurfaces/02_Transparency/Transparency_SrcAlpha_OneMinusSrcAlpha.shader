@@ -1,15 +1,17 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "My/Transparency"
+Shader "My/Transparency/SrcAlpha_OneMinusSrcAlpha"
 { 
 	 
     SubShader//Unity chooses the subshader that fits the GPU best, all passes of selected subshader will be executed
-    {         
+    {
+		
+		Tags{"Queue"="Transparent"}//Default is Geometry,detail:https://docs.unity3d.com/Manual/SL-SubShaderTags.html
+	
         Pass//shader can have multiple passes
-        {		
-			Cull Back //Default is Cull Back
-			//Cull Off  //Close Cull
-			//Cull Front  //Cull Front face
+        {						
+			ZWrite Off//don't write to depth buffer,in order not to occlude other objects
+			Blend SrcAlpha OneMinusSrcAlpha
 		
             CGPROGRAM//begins the part in Unity's cg
             #pragma vertex vert//specify the vert function as the vertex shader
@@ -39,12 +41,9 @@ Shader "My/Transparency"
 
             fixed4 frag (vertexOutput input) : COLOR
             {
-				if(input.posInObjSpace.y<0.0)
-				{
-					discard;
-				}
-				return float4(0.0,input.posInObjSpace.y,0.0,1.0);
+				return float4(0.0,1.0,0.0,0.3);
             }
+			
             ENDCG//here ends the part in cg
         }
 		
