@@ -22,6 +22,6 @@ Material:
     m_Floats:
     - _DistanceNear: 5
     m_Colors:
-    - _ColorFar: {r: 0.4, g: 0.1, b: 0.1, a: 1}
-    - _ColorNear: {r: 0, g: 1, b: 0, a: 1}
-    - _Point: {r: 0, g: 0, b: 0, a: 1}
+    - _ColorFar: {r: 0.11635715, g: 0.10196078, b: 0.4, a: 1}
+    - _ColorNear: {r: 0.70718193, g: 0, b: 1, a: 1}
+    - _Point: {r: -2.49, g: -0.06, b: 0, a: 1}

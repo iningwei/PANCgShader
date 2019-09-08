@@ -2,18 +2,16 @@
 
 Shader "My/ShaderInWorldSpace"
 { 
-    SubShader//Unity chooses the subshader that fits the GPU best
+    SubShader
     {         
-        Pass//shader can have multiple passes
+        Pass
         {
-            CGPROGRAM//begins the part in Unity's cg
-            #pragma vertex vert//specify the vert function as the vertex shader
-            #pragma fragment frag//specify the frag function as the fragment shader
-			
-			
-			//There are some predefined input_struct in UnityCG.cginc,such as appdata_base、appdata_tan、appdata_full、appdata_img
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+									
 			struct vertexInput{
-				float4 vertex:POSITION;//in object coordinates,i.e. local or model coordinates				 
+				float4 vertex:POSITION;
 			};
 
 
@@ -44,11 +42,10 @@ Shader "My/ShaderInWorldSpace"
 				}
 				else
 				{
-					return float4(0.4,0.1,0.1,1.0);//color far from origin
-			
+					return float4(0.4,0.1,0.1,1.0);//color far from origin			
 				}			             
             }
-            ENDCG//here ends the part in cg
+            ENDCG
         }
     }
 }
