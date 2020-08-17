@@ -1,8 +1,11 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+//https://www.cnblogs.com/kane0526/p/9845765.html
 
 Shader "My/Transparency/SrcAlpha_OneMinusSrcAlpha"
 { 
-	 
+	 Properties{
+	 	 _Color("Color",Color)=(1,1,1,1)
+	 }
     SubShader
     {		
 		Tags{"Queue"="Transparent"}
@@ -16,6 +19,8 @@ Shader "My/Transparency/SrcAlpha_OneMinusSrcAlpha"
             #pragma vertex vert
             #pragma fragment frag
 						
+			fixed4 _Color;
+
 			struct vertexInput{
 				float4 vertex:POSITION;	 
 			};
@@ -35,7 +40,7 @@ Shader "My/Transparency/SrcAlpha_OneMinusSrcAlpha"
 
             fixed4 frag (vertexOutput input) : COLOR
             {
-				return float4(0.0,1.0,0.0,0.3);
+				return float4(_Color.r,_Color.g,_Color.b,0.3);
             }			
             ENDCG
         }				 
