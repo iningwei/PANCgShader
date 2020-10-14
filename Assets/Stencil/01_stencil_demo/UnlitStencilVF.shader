@@ -3,20 +3,20 @@
 Shader "My/Stencil/UnlitStencilVF" {
 	Properties {
 	_MainTex ("Base (RGB)", 2D) = "white" {}
-}
+	}
  
-SubShader {
-	Tags { "Queue" = "Geometry" "RenderType"="Opaque" }
-	LOD 100
+	SubShader {
+		Tags { "Queue" = "Geometry" "RenderType"="Opaque" }
+		LOD 100
  
-	Pass {
-		Stencil 
-		{
-            Ref 1
-      		Comp Equal
-         }
+		Pass {
+			Stencil 
+			{
+				Ref 1
+      			Comp Equal
+			}
 
-		CGPROGRAM
+			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma multi_compile_fog
@@ -54,7 +54,7 @@ SubShader {
 			
 				return col;
 			}
-		ENDCG
-	}
-} 
+			ENDCG
+		}
+	} 
 }
