@@ -1,11 +1,8 @@
-﻿//图片的WrapMode需要设置为Repeat
-Shader "My/CirculationBg"
+﻿Shader "Unlit/wave"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_ScrollXSpeed("X Scroll Speed",Range(0,2))=0
-		_ScrollYSpeed("Y Scroll Speed",Range(0,2))=0
     }
     SubShader
     {
@@ -17,6 +14,8 @@ Shader "My/CirculationBg"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            // make fog work
+            // #pragma multi_compile_fog
             
             #include "UnityCG.cginc"
 
@@ -28,32 +27,25 @@ Shader "My/CirculationBg"
 
             struct v2f
             {
-                float2 uv : TEXCOORD0;               
-                float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD0;
+                float4 vertex : POSITION;
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-			fixed _ScrollXSpeed;
-			fixed _ScrollYSpeed;
-
+            
             v2f vert (appdata v)
             {
-			
                 v2f o;
+                v.vertex.y = sin(v.vertex.x+_Time.y);
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);               
+                o.uv = v.uv;
                 return o;
             }
-
+            
             fixed4 frag (v2f i) : SV_Target
-            {                				 				
-				fixed xNew=_ScrollXSpeed*_Time;
-				fixed yNew=_ScrollYSpeed*_Time;
-				fixed2 uv_offset=fixed2(xNew,yNew);
-				
-                 fixed4 col = tex2D(_MainTex, i.uv+uv_offset);               
-				//fixed4 col = tex2D(_MainTex, i.uv);  		
+            {
+                fixed4 col = tex2D(_MainTex, i.uv);     
                 return col;
             }
             ENDCG

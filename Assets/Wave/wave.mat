@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CirculationBg
-  m_Shader: {fileID: 4800000, guid: 62a3beea7baf19148a1ecc5063390e9d, type: 3}
+  m_Name: wave
+  m_Shader: {fileID: 4800000, guid: a7e5bc669f7399a4cb35046e85792df3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,9 +40,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0923e7ccdc6196f4b899d80f476fcd9c, type: 3}
-        m_Scale: {x: 2, y: 2}
-        m_Offset: {x: -4.2, y: 15.72}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -67,8 +67,6 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScrollXSpeed: 0
-    - _ScrollYSpeed: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
